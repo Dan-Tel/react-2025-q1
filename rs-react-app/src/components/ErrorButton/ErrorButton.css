@@ -1,0 +1,17 @@
+.error-btn {
+  width: 180px;
+  padding: 10px 15px;
+  background: #36740a;
+  border: 2px outset #54b310;
+  border-radius: 5px;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  transition: 0.1s ease-in-out;
+}
+
+.error-btn:hover {
+  background: #2d5f08;
+  border: 2px outset #418c0c;
+}

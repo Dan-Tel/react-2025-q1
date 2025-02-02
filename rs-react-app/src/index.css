@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: url('https://wallpapers.com/images/hd/star-wars-space-background-1920-x-1080-9ca4x97lfnx813uu.jpg'),
+    url('https://wallpapers.com/images/hd/star-wars-space-background-1920-x-1080-9ca4x97lfnx813uu.jpg');
+  background-size: cover;
+  background-blend-mode: multiply;
+  font-family: 'JetBrains Mono', serif;
+  color: #ffffff;
+  font-size: 16px;
+}
