@@ -5,8 +5,10 @@ class SWAPI {
     return data;
   };
 
-  getAllCharactersFromPage = async (page: number) => {
-    return this.getData(`https://swapi.dev/api/people?page=${page}`);
+  getAllCharactersFromPage = async (page: number, term: string) => {
+    return this.getData(
+      `https://swapi.dev/api/people?search=${term}&page=${page}`
+    );
   };
 }
 
