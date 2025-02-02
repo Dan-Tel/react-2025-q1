@@ -2,9 +2,11 @@ import { Component } from 'react';
 
 import './App.css';
 
-import SWAPI from './services/SWAPI';
 import Search from './components/Search/Search';
 import CharactersList from './components/CharactersList/CharactersList';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
+import ErrorMessage from './components/ErrorMessage/ErrorMessage';
+import ErrorButton from './components/ErrorButton/ErrorButton';
 
 export interface ICharacter {
   birth_year: string;
@@ -27,27 +29,16 @@ export interface ICharacter {
 
 interface IState {
   term: string;
-  characters: ICharacter[];
+  loading: boolean;
+  error: boolean;
 }
 
 class App extends Component<null, IState> {
   state: IState = {
     term: '',
-    characters: [],
+    loading: true,
+    error: false,
   };
-
-  swapi: SWAPI;
-
-  constructor(props: null) {
-    super(props);
-    this.swapi = new SWAPI();
-  }
-
-  loadCharacters(): void {
-    this.swapi
-      .getAllCharactersFromPage(1, this.state.term)
-      .then((res) => this.setState({ characters: res.results }));
-  }
 
   onSearchSubmit = (term: string) => {
     if (term == this.state.term) return;
@@ -55,26 +46,23 @@ class App extends Component<null, IState> {
     this.setState({ term });
   };
 
-  componentDidMount(): void {
-    this.loadCharacters();
-  }
-
-  componentDidUpdate(_prevProps: null, prevState: Readonly<IState>): void {
-    if (prevState.term == this.state.term) return;
-
-    this.loadCharacters();
-  }
-
   render() {
+    // if (this.state.error) {
+    //   throw new Error('error boundary testing');
+    // }
+
     return (
-      <>
+      <ErrorBoundary
+        onSearchSubmit={this.onSearchSubmit}
+        FallbackUI={ErrorMessage}
+      >
         <Search onSearchSubmit={this.onSearchSubmit} />
         <hr></hr>
-        <CharactersList
-          term={this.state.term}
-          characters={this.state.characters}
-        />
-      </>
+
+        <CharactersList term={this.state.term} />
+
+        <ErrorButton />
+      </ErrorBoundary>
     );
   }
 }
