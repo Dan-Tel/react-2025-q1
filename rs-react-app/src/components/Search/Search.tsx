@@ -13,7 +13,7 @@ interface IState {
 class Search extends Component<IProps, IState> {
   state = {
     term: localStorage.getItem('term') ?? '',
-  }
+  };
 
   componentDidMount(): void {
     this.onSearchSubmit();

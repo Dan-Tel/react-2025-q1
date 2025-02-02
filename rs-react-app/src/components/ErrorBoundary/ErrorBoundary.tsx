@@ -24,6 +24,7 @@ class ErrorBoundary extends Component<IProps, IState> {
 
   componentDidCatch(error: Error): void {
     this.setState({ message: error.message });
+    console.log(error);
   }
 
   onErrorReset = () => {
