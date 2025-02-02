@@ -16,7 +16,7 @@ interface IState {
 
 class App extends Component<object, IState> {
   state: IState = {
-    term: '',
+    term: localStorage.getItem('term') ?? '',
     loading: true,
     error: false,
   };

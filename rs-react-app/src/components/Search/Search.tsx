@@ -12,16 +12,24 @@ interface IState {
 
 class Search extends Component<IProps, IState> {
   state = {
-    term: '',
-  };
+    term: localStorage.getItem('term') ?? '',
+  }
+
+  componentDidMount(): void {
+    this.onSearchSubmit();
+  }
 
   onSearchChange = (e: ChangeEvent) => {
     const input: HTMLInputElement = e.target as HTMLInputElement;
+    localStorage.setItem('term', input.value);
     this.setState({ term: input.value });
   };
 
   onSearchSubmit = () => {
-    this.props.onSearchSubmit(this.state.term);
+    const processedTerm = this.state.term.trim();
+    localStorage.setItem('term', processedTerm);
+    this.props.onSearchSubmit(processedTerm);
+    this.setState({ term: processedTerm });
   };
 
   render() {

@@ -55,7 +55,6 @@ class CharactersList extends Component<IProps, IState> {
 
     this.setState({ loading: true, error: null });
     this.loadCharacters();
-    console.log('update');
   }
 
   loadCharacters(): void {

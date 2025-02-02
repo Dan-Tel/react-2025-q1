@@ -8,7 +8,7 @@
 
 .search-field::before,
 .search-field::after {
-  content: "";
+  content: '';
   position: absolute;
   width: calc(100% + 15px);
   height: calc(100% + 15px);
@@ -31,7 +31,7 @@
   flex-grow: 1;
   padding: 10px 15px;
   background: none;
-  border: 2px outset #54B310;
+  border: 2px outset #54b310;
   border-radius: 5px;
   color: inherit;
   font-size: inherit;
@@ -42,7 +42,7 @@
 .search-field button {
   width: 180px;
   background: #36740a;
-  border: 2px outset #54B310;
+  border: 2px outset #54b310;
   border-radius: 5px;
   color: inherit;
   font-size: inherit;
