@@ -1,7 +1,26 @@
 import { Component, ReactNode } from 'react';
-import { ICharacter } from '../../App';
 import Loader from '../Loader/Loader';
 import SWAPI from '../../services/SWAPI';
+import './CharactersList.css';
+
+interface ICharacter {
+  birth_year: string;
+  created: string;
+  edited: string;
+  eye_color: string;
+  films: string[];
+  gender: string;
+  hair_color: string;
+  height: string;
+  homeworld: string;
+  mass: string;
+  name: string;
+  skin_color: string;
+  species: string[];
+  starships: string[];
+  url: string;
+  vehicles: string[];
+}
 
 interface IProps {
   term: string;
@@ -55,18 +74,37 @@ class CharactersList extends Component<IProps, IState> {
 
     const loader: ReactNode | null = this.state.loading ? <Loader /> : null;
     const charactersList: ReactNode = !this.state.loading ? (
-      <ul>
-        {this.state.characters.map(({ name }, i) => (
-          <li key={i}>{name}</li>
-        ))}
-      </ul>
+      <>
+        <div className="characters-list__header">
+          <p>
+            <span className="yellow-text">[i]</span> Charaters name
+          </p>
+          <p>Description</p>
+        </div>
+        <ul>
+          {this.state.characters.map(({ name, height, mass }, i) => (
+            <li key={i}>
+              <p>
+                [{i}] {name}
+              </p>
+              <p>
+                {height}cm, {mass}kg
+              </p>
+            </li>
+          ))}
+        </ul>
+      </>
     ) : null;
 
     return (
-      <>
+      <div className="characters-list">
         {loader}
         {charactersList}
-      </>
+        <div className="pagination">
+          1/8
+          <span className="next-page">{' ->'}</span>
+        </div>
+      </div>
     );
   }
 }

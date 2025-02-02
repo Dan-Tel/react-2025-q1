@@ -1,10 +1,11 @@
 import { Component } from 'react';
+import './ErrorButton.css';
 
 interface IState {
   error: boolean;
 }
 
-class ErrorButton extends Component {
+class ErrorButton extends Component<object, IState> {
   state = {
     error: false,
   };
@@ -15,7 +16,10 @@ class ErrorButton extends Component {
     }
 
     return (
-      <button onClick={() => this.setState({ error: true })}>
+      <button
+        className="error-btn"
+        onClick={() => this.setState({ error: true })}
+      >
         Error Button
       </button>
     );

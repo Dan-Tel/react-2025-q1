@@ -1,5 +1,7 @@
 import { ChangeEvent, Component } from 'react';
 
+import './Search.css';
+
 interface IProps {
   onSearchSubmit: (term: string) => void;
 }
@@ -25,10 +27,8 @@ class Search extends Component<IProps, IState> {
   render() {
     return (
       <div className="search-field">
-        {this.state.term}
-        <hr></hr>
         <input
-          placeholder="Write a person name"
+          placeholder="Write a character name..."
           type="text"
           value={this.state.term}
           onChange={this.onSearchChange}

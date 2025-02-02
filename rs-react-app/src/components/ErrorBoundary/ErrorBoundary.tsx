@@ -1,4 +1,5 @@
 import { Component, ComponentType, ReactNode } from 'react';
+import './ErrorBoundary.css';
 
 interface IProps {
   children: ReactNode;
@@ -33,10 +34,10 @@ class ErrorBoundary extends Component<IProps, IState> {
   render() {
     if (this.state.error) {
       return (
-        <>
-          <button onClick={this.onErrorReset}>Reset</button>
+        <div className="error-boundary">
           <this.props.FallbackUI text={this.state.message} />
-        </>
+          <button onClick={this.onErrorReset}>Reset</button>
+        </div>
       );
     }
 

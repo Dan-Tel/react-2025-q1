@@ -7,9 +7,10 @@ interface IProps {
 class ErrorMessage extends Component<IProps> {
   render() {
     return (
-      <>
-        <div>{this.props.text}</div>
-      </>
+      <div className="error-message">
+        <span className="yellow-text">Error message:</span> {this.props.text}{' '}
+        (╥﹏╥)
+      </div>
     );
   }
 }
